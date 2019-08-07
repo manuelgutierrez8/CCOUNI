@@ -32,3 +32,12 @@ body {
     }
 }
 
+.btn-primary {
+    background-color: $bg-color !important;
+    color: #fff;
+
+    &:hover {
+        background-color: lighten($bg-color, 20%)!important;
+    }
+}
+

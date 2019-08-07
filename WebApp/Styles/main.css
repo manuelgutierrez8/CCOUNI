@@ -1,12 +1,10 @@
 ﻿/* Breakpoints */
-.login-box {
-  height: 300px; }
-  .login-box .login-content {
-    height: 100%;
-    padding: 15px; }
-  @media screen and (min-width: 768px) {
-    .login-box {
-      height: 300px; } }
+.login-box .login-content {
+  padding: 15px; }
+
+@media screen and (min-width: 768px) {
+  .login-box {
+    height: 300px; } }
 
 body {
   font-family: 'Roboto', sans-serif; }
@@ -29,3 +27,9 @@ body {
 
 .footer a {
   color: #fff; }
+
+.btn-primary {
+  background-color: #003782 !important;
+  color: #fff; }
+  .btn-primary:hover {
+    background-color: #0062e8 !important; }
