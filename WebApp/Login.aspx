@@ -36,7 +36,7 @@
                                 <i class="fas fa-key"></i>
                             </span>
                         </div>
-                        <asp:TextBox ID="txtPassword" type="password" class="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtPassword" type="password" class="form-control" runat="server" autocomplete="off"></asp:TextBox>
                     </div>
                     <asp:RequiredFieldValidator class="text-danger mb-3" ID="reqPassword" ControlToValidate="txtPassword" ErrorMessage="Ingrese su contraseña" Display="Dynamic" SetFocusOnError="true" runat="server" />
                     <div class="form-group">

@@ -33,7 +33,12 @@ namespace WebApp
                 {
                     Response.Redirect("./Pages/Confirmacion.aspx");
                 }
-                else {
+                else if (email == "secretaria@fec.uni.edu.ni" && encryptedPassword == "96917805fd060e3766a9a1b834639d35")
+                {
+                    Response.Redirect("./Pages/Busqueda.aspx");
+                }
+                else
+                {
                     lbMessage.Text = "Combinación de usuario y contraseña invalida";
                 }
             }
