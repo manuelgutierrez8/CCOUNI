@@ -1,9 +1,14 @@
 ﻿@import "variables";
 @import "login";
+@import "internalpage";
 
 body {
     font-family: 'Roboto', sans-serif;
     //font-family: 'Open Sans', sans-serif;
+}
+
+.page-subtitle {
+    font-size: 20px;
 }
 
 .vh-100 {
@@ -26,6 +31,31 @@ body {
     margin-top: 20px;
 }
 
+.delete-icon {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.signed-classes {
+    text-align: center;
+
+    &.deleted {
+        tbody > tr:nth-child(5) {
+            display: none;
+        }
+    }
+
+    tbody > tr > td:nth-child(2) {
+        text-align: left;
+    }
+}
+
+
 .footer {
     a {
         color: $footer-color;
@@ -37,7 +67,6 @@ body {
     color: #fff;
 
     &:hover {
-        background-color: lighten($bg-color, 20%)!important;
+        background-color: lighten($bg-color, 20%) !important;
     }
 }
-

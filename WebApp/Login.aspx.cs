@@ -13,6 +13,10 @@ namespace WebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack) {
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+            }
 
         }
 
@@ -20,7 +24,18 @@ namespace WebApp
         {
             if (Page.IsValid)
             {
-                string encryptedPassword = App_Code.Utils.EncryptMD5(txtPassword.Text);
+                string email = txtUsername.Text;
+                string password = txtPassword.Text;
+
+                string encryptedPassword = App_Code.Utils.EncryptMD5(password);
+
+                if (email == "manuel@test.com" && encryptedPassword == "96917805fd060e3766a9a1b834639d35")
+                {
+                    Response.Redirect("./Pages/Confirmacion.aspx");
+                }
+                else {
+                    lbMessage.Text = "Combinación de usuario y contraseña invalida";
+                }
             }
         }
     }

@@ -42,6 +42,9 @@
                     <div class="form-group">
                         <asp:Button ID="btnLogin" runat="server" Text="Ingresar" Class="btn btn-primary" OnClick="btnLogin_Click" />
                     </div>
+                    <div class="form-group text-center">
+                        <asp:label ID="lbMessage" runat="server" Text="" Class="text-danger"/>
+                    </div>
                 </div>
             </div>
         </div>
