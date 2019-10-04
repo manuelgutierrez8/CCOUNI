@@ -81,10 +81,14 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="MasterPages\Detail.Master" />
+    <Content Include="MasterPages\Admin.Master" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Pages\Busqueda.aspx" />
     <Content Include="Pages\Confirmacion.aspx" />
     <None Include="Styles\internalpage.scss" />
+    <Content Include="Pages\HojaMatricula.aspx" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -128,6 +132,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\Detail.Master.cs">
       <DependentUpon>Detail.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -142,6 +153,13 @@
     <Compile Include="MasterPages\header.Master.designer.cs">
       <DependentUpon>header.Master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Busqueda.aspx.cs">
+      <DependentUpon>Busqueda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Busqueda.aspx.designer.cs">
+      <DependentUpon>Busqueda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Confirmacion.aspx.cs">
       <DependentUpon>Confirmacion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,11 +167,19 @@
     <Compile Include="Pages\Confirmacion.aspx.designer.cs">
       <DependentUpon>Confirmacion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HojaMatricula.aspx.cs">
+      <DependentUpon>HojaMatricula.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\HojaMatricula.aspx.designer.cs">
+      <DependentUpon>HojaMatricula.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
