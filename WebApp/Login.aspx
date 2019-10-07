@@ -20,7 +20,7 @@
                             </span>
                         </div>
                         <%--<ajaxToolkit:ValidatorCalloutExtender ID="ValidatorCalloutExtender1" TargetControlID="txtUsername" runat="server"></ajaxToolkit:ValidatorCalloutExtender>--%>
-                        <asp:TextBox ID="txtUsername" class="form-control" placeholder="correo@dominio.com" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtUsername" class="form-control" placeholder="correo@dominio.com" runat="server" autocomplete="off"></asp:TextBox>
                     </div>
                     <asp:RequiredFieldValidator class="text-danger mb-3" ID="reqUsername" ControlToValidate="txtUsername" ErrorMessage="El correo es requerido" Display="Dynamic" SetFocusOnError="true" runat="server" />
                     <asp:RegularExpressionValidator class="text-danger mb-3" ID="mail" runat="server"

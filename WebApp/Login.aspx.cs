@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApp.App_Code;
 
 namespace WebApp
 {
@@ -27,9 +28,23 @@ namespace WebApp
                 string email = txtUsername.Text;
                 string password = txtPassword.Text;
 
+                //Encrypt Password
                 string encryptedPassword = App_Code.Utils.EncryptMD5(password);
 
-                if (email == "manuel@test.com" && encryptedPassword == "96917805fd060e3766a9a1b834639d35")
+                LoginResult result = Auth.Login(email, encryptedPassword);
+
+                if (result.Status)
+                {
+                    int roleId = Convert.ToInt32(result.RoleId);
+
+                    Response.Redirect(Auth.SetStartPage(roleId));
+                }
+                else
+                {
+                    lbMessage.Text = result.Message;
+                }
+
+                /*if (email == "manuel@test.com" && encryptedPassword == "96917805fd060e3766a9a1b834639d35")
                 {
                     Response.Redirect("./Pages/Confirmacion.aspx");
                 }
@@ -39,8 +54,8 @@ namespace WebApp
                 }
                 else
                 {
-                    lbMessage.Text = "Combinación de usuario y contraseña invalida";
-                }
+                    
+                }*/
             }
         }
     }

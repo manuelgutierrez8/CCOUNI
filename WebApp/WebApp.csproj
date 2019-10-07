@@ -67,14 +67,6 @@
   <ItemGroup>
     <Content Include="Assets\logo_uni.png" />
     <Content Include="MasterPages\header.Master" />
-    <Content Include="App_Code\dbmodel.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>dbmodel.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="App_Code\dbmodel.dbml.layout">
-      <DependentUpon>dbmodel.dbml</DependentUpon>
-    </None>
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -82,6 +74,14 @@
     </None>
     <Content Include="MasterPages\Detail.Master" />
     <Content Include="MasterPages\Admin.Master" />
+    <Content Include="Model\dbModel.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>dbModel.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Model\dbModel.dbml.layout">
+      <DependentUpon>dbModel.dbml</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Pages\Busqueda.aspx" />
@@ -111,12 +111,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\dbmodel.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbmodel.dbml</DependentUpon>
-    </Content>
+    <Compile Include="App_Code\Auth.cs" />
     <Compile Include="App_Code\MenuOption.cs" />
+    <Compile Include="App_Code\Result.cs" />
     <Compile Include="App_Code\Utils.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -152,6 +149,11 @@
     </Compile>
     <Compile Include="MasterPages\header.Master.designer.cs">
       <DependentUpon>header.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Model\dbModel.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbModel.dbml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Busqueda.aspx.cs">
       <DependentUpon>Busqueda.aspx</DependentUpon>
@@ -195,7 +197,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50391</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50391/</IISUrl>
+          <IISUrl>http://localhost:51212/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
