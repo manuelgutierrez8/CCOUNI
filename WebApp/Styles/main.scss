@@ -79,6 +79,14 @@ body {
     nav, footer, footer p {
         display:none;
     }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .btn, .btn-primary {
+        display: none;
+    }
 }
 
 

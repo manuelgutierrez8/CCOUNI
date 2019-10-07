@@ -88,6 +88,8 @@
     <Content Include="Pages\Confirmacion.aspx" />
     <None Include="Styles\internalpage.scss" />
     <Content Include="Pages\HojaMatricula.aspx" />
+    <Content Include="Pages\Horario.aspx" />
+    <Content Include="Pages\SolicitudAsignatura.aspx" />
     <Content Include="Scripts\main.js" />
     <Content Include="Styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
@@ -175,6 +177,20 @@
     </Compile>
     <Compile Include="Pages\HojaMatricula.aspx.designer.cs">
       <DependentUpon>HojaMatricula.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Horario.aspx.cs">
+      <DependentUpon>Horario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Horario.aspx.designer.cs">
+      <DependentUpon>Horario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SolicitudAsignatura.aspx.cs">
+      <DependentUpon>SolicitudAsignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SolicitudAsignatura.aspx.designer.cs">
+      <DependentUpon>SolicitudAsignatura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

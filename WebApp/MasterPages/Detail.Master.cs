@@ -28,6 +28,16 @@ namespace WebApp.MasterPages
             option2.Url = "./HojaMatricula.aspx";
             itemList.Add(option2);
 
+            MenuOption option3 = new MenuOption();
+            option3.Title = "Horario";
+            option3.Url = "./Horario.aspx";
+            itemList.Add(option3);
+
+            MenuOption option4 = new MenuOption();
+            option4.Title = "Solicitud Asignatura";
+            option4.Url = "./SolicitudAsignatura.aspx";
+            itemList.Add(option4);
+
             rptMenu.DataSource = itemList;
             rptMenu.DataBind();
         }
