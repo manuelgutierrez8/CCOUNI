@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="Assets\logo_uni.png" />
     <Content Include="MasterPages\header.Master" />
+    <Content Include="Assets\Solicitud Inscripcion.pdf" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -79,6 +80,7 @@
       <LastGenOutput>dbModel.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="MasterPages\Dean.Master" />
     <None Include="Model\dbModel.dbml.layout">
       <DependentUpon>dbModel.dbml</DependentUpon>
     </None>
@@ -89,6 +91,7 @@
     <None Include="Styles\internalpage.scss" />
     <Content Include="Pages\HojaMatricula.aspx" />
     <Content Include="Pages\Horario.aspx" />
+    <Content Include="Pages\RevisionSolicitud.aspx" />
     <Content Include="Pages\SolicitudAsignatura.aspx" />
     <Content Include="Scripts\main.js" />
     <Content Include="Styles\main.css">
@@ -138,6 +141,13 @@
     <Compile Include="MasterPages\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="MasterPages\Dean.Master.cs">
+      <DependentUpon>Dean.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPages\Dean.Master.designer.cs">
+      <DependentUpon>Dean.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPages\Detail.Master.cs">
       <DependentUpon>Detail.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -184,6 +194,13 @@
     </Compile>
     <Compile Include="Pages\Horario.aspx.designer.cs">
       <DependentUpon>Horario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RevisionSolicitud.aspx.cs">
+      <DependentUpon>RevisionSolicitud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RevisionSolicitud.aspx.designer.cs">
+      <DependentUpon>RevisionSolicitud.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\SolicitudAsignatura.aspx.cs">
       <DependentUpon>SolicitudAsignatura.aspx</DependentUpon>
