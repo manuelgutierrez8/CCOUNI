@@ -11,4 +11,104 @@
       <Column Name="password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Status_catalog" Member="Status_catalogs">
+    <Type Name="Status_catalog">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Status_catalog_Student_schedule" Member="Student_schedules" ThisKey="id" OtherKey="status_id" Type="Student_schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="first_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="last_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="license" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Student_Student_schedule" Member="Student_schedules" ThisKey="id" OtherKey="student_id" Type="Student_schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student_schedule" Member="Student_schedules">
+    <Type Name="Student_schedule">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="student_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="schedule_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[current]" Member="current" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Student_Student_schedule" Member="Student" ThisKey="student_id" OtherKey="id" Type="Student" IsForeignKey="true" />
+      <Association Name="Status_catalog_Student_schedule" Member="Status_catalog" ThisKey="status_id" OtherKey="id" Type="Status_catalog" IsForeignKey="true" />
+      <Association Name="Schedule_Student_schedule" Member="Schedule" ThisKey="schedule_id" OtherKey="id" Type="Schedule" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schedule" Member="Schedules">
+    <Type Name="Schedule">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="semester_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="group_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hour_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="class_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="teacher_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="day" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Schedule_Student_schedule" Member="Student_schedules" ThisKey="id" OtherKey="schedule_id" Type="Student_schedule" />
+      <Association Name="Semester_Schedule" Member="Semester" ThisKey="semester_id" OtherKey="id" Type="Semester" IsForeignKey="true" />
+      <Association Name="Class_Schedule" Member="Class" ThisKey="class_id" OtherKey="id" Type="Class" IsForeignKey="true" />
+      <Association Name="Teacher_Schedule" Member="Teacher" ThisKey="teacher_id" OtherKey="id" Type="Teacher" IsForeignKey="true" />
+      <Association Name="Group_Schedule" Member="Group" ThisKey="group_id" OtherKey="id" Type="Group" IsForeignKey="true" />
+      <Association Name="Period_Schedule" Member="Period" ThisKey="hour_id" OtherKey="id" Type="Period" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Semester" Member="Semesters">
+    <Type Name="Semester">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="period" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[current]" Member="current" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Semester_Schedule" Member="Schedules" ThisKey="id" OtherKey="semester_id" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Shift" Member="Shifts">
+    <Type Name="Shift">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Shift_Period" Member="Periods" ThisKey="id" OtherKey="id_shift" Type="Period" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Class" Member="Classes">
+    <Type Name="Class">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="credits" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Class_Schedule" Member="Schedules" ThisKey="id" OtherKey="class_id" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teachers" Member="Teachers">
+    <Type Name="Teacher">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Teacher_Schedule" Member="Schedules" ThisKey="id" OtherKey="teacher_id" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Groups">
+    <Type Name="Group">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="career_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Group_Schedule" Member="Schedules" ThisKey="id" OtherKey="group_id" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Period" Member="Periods">
+    <Type Name="Period">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="start_time" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="end_time" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="id_shift" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Period_Schedule" Member="Schedules" ThisKey="id" OtherKey="hour_id" Type="Schedule" />
+      <Association Name="Shift_Period" Member="Shift" ThisKey="id_shift" OtherKey="id" Type="Shift" IsForeignKey="true" />
+    </Type>
+  </Table>
 </Database>
