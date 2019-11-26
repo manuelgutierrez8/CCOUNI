@@ -119,6 +119,7 @@
     <Compile Include="App_Code\Auth.cs" />
     <Compile Include="App_Code\MenuOption.cs" />
     <Compile Include="App_Code\Result.cs" />
+    <Compile Include="App_Code\Student.cs" />
     <Compile Include="App_Code\Utils.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

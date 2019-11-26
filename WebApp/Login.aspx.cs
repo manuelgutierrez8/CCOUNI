@@ -36,6 +36,7 @@ namespace WebApp
                 if (result.Status)
                 {
                     int roleId = Convert.ToInt32(result.RoleId);
+                    Session["userId"] = result.UserId;
 
                     Response.Redirect(Auth.SetStartPage(roleId));
                 }
