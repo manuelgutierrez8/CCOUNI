@@ -91,6 +91,7 @@
     <Content Include="Pages\Busqueda.aspx" />
     <Content Include="Pages\Confirmacion.aspx" />
     <None Include="Styles\internalpage.scss" />
+    <Content Include="Pages\EliminarAsignatura.aspx" />
     <Content Include="Pages\HojaMatricula.aspx" />
     <Content Include="Pages\Horario.aspx" />
     <Content Include="Pages\RevisionSolicitud.aspx" />
@@ -197,6 +198,13 @@
     </Compile>
     <Compile Include="Pages\Confirmacion.aspx.designer.cs">
       <DependentUpon>Confirmacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EliminarAsignatura.aspx.cs">
+      <DependentUpon>EliminarAsignatura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EliminarAsignatura.aspx.designer.cs">
+      <DependentUpon>EliminarAsignatura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\HojaMatricula.aspx.cs">
       <DependentUpon>HojaMatricula.aspx</DependentUpon>

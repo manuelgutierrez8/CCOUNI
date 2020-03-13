@@ -19,11 +19,15 @@ namespace WebApp.App_Code
                                where ss.current == true && ss.student_id == studentId
                                select new StudentSchedule
                                {
+                                   Id = ss.id,
                                    ClassId = ss.Schedule.Class.id,
                                    ClassName = ss.Schedule.Class.name,
+                                   ClassroomName = ss.Schedule.Group.Classroom,
                                    Credits = Convert.ToInt32(ss.Schedule.Class.credits),
                                    GroupId = Convert.ToInt32(ss.Schedule.group_id),
                                    GroupName = ss.Schedule.Group.name,
+                                   statusId = Convert.ToInt32(ss.status_id),
+                                   StatusName = ss.Status_catalog.name
                                };
 
                 result.StudentScheduleList = schedule.ToList();
@@ -44,6 +48,13 @@ namespace WebApp.App_Code
             Model.dbModelDataContext model = new Model.dbModelDataContext();
 
             return model.Students.Where(s => s.user_id.Equals(userId)).FirstOrDefault().id;
+        }
+
+        public static Model.Student GetStudentById(int studentId)
+        {
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+            return model.Students.Where(s => s.id.Equals(studentId)).FirstOrDefault();
         }
     }
 }

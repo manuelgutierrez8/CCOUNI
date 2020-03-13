@@ -9,13 +9,13 @@
                 <h1 class="text-center">Confimación de asignaturas</h1>
             </div>
             <div class="col-sm-12 col-md-6 mb-md-5">
-                <p class="page-subtitle"><b>Nombres y Apellidos:</b> Manuel Abraham Gutiérrez</p>
-                <p class="page-subtitle"><b>Carrera:</b> Ingeniería en Computación</p>
-                <p class="page-subtitle"><b>Semestre:</b> Segundo Semestre 2019</p>
+                <p class="page-subtitle"><b>Nombres y Apellidos:</b>&nbsp;<asp:Label ID="lbStudentName" Text="" runat="server" /> </p>
+                <p class="page-subtitle"><b>Carrera:</b>&nbsp;<asp:Label ID="lbStudentCareer" Text="" runat="server" /></p>
+                <p class="page-subtitle"><b>Semestre:</b>&nbsp;<asp:Label ID="lbCurrentSemester" Text="" runat="server" /></p>
             </div>
             <div class="col-sm-12 col-md-6 mb-5">
-                <p class="page-subtitle"><b>Carnet:</b> 2008-23295</p>
-                <p class="page-subtitle"><b>Turno:</b> Diurno</p>
+                <p class="page-subtitle"><b>Carnet:</b>&nbsp;<asp:Label ID="lbStudentLicense" Text="" runat="server" /></p>
+                <p class="page-subtitle"><b>Turno:</b>&nbsp;<asp:Label ID="lbStudentPeriod" Text="" runat="server" /></p>
             </div>
 
             <div class="col-12 mb-5">
@@ -26,30 +26,41 @@
                     <HeaderTemplate>
                         <table id="tbSignedClasses" class="table table-striped table-responsive-sm signed-classes">
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Asignatura</th>
+                                <th scope="col">Estado</th>
                                 <th scope="col">Grupo</th>
                                 <th scope="col">Aula</th>
                                 <th scope="col">Créditos</th>
-                                <th scope="col">Eliminar</th>
+                                <th scope="col">Acción</th>
                             </tr>
                     </HeaderTemplate>
                     <ItemTemplate>
                         <tr>
                             <td>
-                                1
-                            </td>
-                            <td>
                                 <asp:Label ID="lbAsignaturaName" runat="server" Text='<%# Eval("ClassName") %>' />
                             </td>
                             <td>
-                                as
+                                <i class="fas fa-circle <%# SetStatusColorClass(Eval("StatusId")) %>" title='<%# Eval("StatusName") %>'></i>
                             </td>
                             <td>
-                                as
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("GroupName") %>' />
                             </td>
                             <td>
-                                as
+                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("ClassroomName") %>' />
+                            </td>
+                            <td>
+                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("Credits") %>' />
+                            </td>
+                            <td>
+                                <%--data-toggle="modal" data-target="#reasonModal"--%>
+                                <asp:LinkButton runat="server" ID="btnDelete" CssClass='<%# DisplayDeleteButton(Eval("Id")) %>'
+                                    CausesValidation="false" OnCommand="btnDelete_Command" CommandArgument='<%# Eval("Id") %>' ToolTip="Eliminar Asignatura">
+                                     <i class="fas fa-trash-alt delete-icon"></i>
+                                </asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="LinkButton1" CssClass='<%# DisplayAddButton(Eval("Id")) %>'
+                                    CausesValidation="false" OnCommand="btnDelete_Command" CommandArgument='<%# Eval("Id") %>' ToolTip="Añadir Asignatura">
+                                     <i class="fas fa-plus-circle success"></i>
+                                </asp:LinkButton>
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -57,48 +68,13 @@
                         </table>
                     </FooterTemplate>
                 </asp:Repeater>
-
-                <%--<asp:TableRow>
-                        <asp:TableCell>1</asp:TableCell>
-                        <asp:TableCell>Filosofia</asp:TableCell>
-                        <asp:TableCell>1M1-CO</asp:TableCell>
-                        <asp:TableCell>1030</asp:TableCell>
-                        <asp:TableCell>5</asp:TableCell>
-                        <asp:TableCell><a><i class="fas fa-trash-alt delete-icon"></i></a></asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>2</asp:TableCell>
-                        <asp:TableCell>Introduccion a la Ingenieria en computación</asp:TableCell>
-                        <asp:TableCell>1M1-CO</asp:TableCell>
-                        <asp:TableCell>1030</asp:TableCell>
-                        <asp:TableCell>5</asp:TableCell>
-                        <asp:TableCell><a><i class="fas fa-trash-alt delete-icon"></i></a></asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>3</asp:TableCell>
-                        <asp:TableCell>Geometría Analitica y Descriptiva</asp:TableCell>
-                        <asp:TableCell>1M1-CO</asp:TableCell>
-                        <asp:TableCell>1030</asp:TableCell>
-                        <asp:TableCell>5</asp:TableCell>
-                        <asp:TableCell><a><i class="fas fa-trash-alt delete-icon"></i></a></asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>4</asp:TableCell>
-                        <asp:TableCell>Ingles I</asp:TableCell>
-                        <asp:TableCell>1M1-CO</asp:TableCell>
-                        <asp:TableCell>1030</asp:TableCell>
-                        <asp:TableCell>5</asp:TableCell>
-                        <asp:TableCell><asp:LinkButton ID="btnDelete" data-toggle="modal" data-target="#reasonModal" runat="server"><i class="fas fa-trash-alt delete-icon"></i></asp:LinkButton></asp:TableCell>
-                        <%--OnClientClick="return confirm('¿Está seguro de eliminar esta asignatura?')"--%>
-                    </asp:TableRow>--%>
-                
-
                 <p class="text-center">Si esta de acuerdo con tomar estas asignaturas, por favor haga click en <i><b>Confirmar</b></i> para generar su hoja de matricula</p>
             </div>
             <div class="col-12 text-center">
                 <asp:Button ID="btnConfirmClasses" Text="Confirmar" class="btn btn-primary" runat="server" OnClientClick="return confirm('¿Desea guardar los cambios? Esta acción no se puede deshacer');" OnClick="btnConfirmClasses_Click" />
             </div>
         </div>
+        <asp:HiddenField ID="hfScheduleId" runat="server"/>
 
     </div>
     <div class="modal fade" id="reasonModal" tabindex="-1" role="dialog" aria-labelledby="reasonModalLabel" aria-hidden="true">

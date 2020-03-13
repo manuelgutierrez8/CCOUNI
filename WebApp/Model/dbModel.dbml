@@ -54,8 +54,8 @@
       <Association Name="Semester_Schedule" Member="Semester" ThisKey="semester_id" OtherKey="id" Type="Semester" IsForeignKey="true" />
       <Association Name="Class_Schedule" Member="Class" ThisKey="class_id" OtherKey="id" Type="Class" IsForeignKey="true" />
       <Association Name="Teacher_Schedule" Member="Teacher" ThisKey="teacher_id" OtherKey="id" Type="Teacher" IsForeignKey="true" />
-      <Association Name="Group_Schedule" Member="Group" ThisKey="group_id" OtherKey="id" Type="Group" IsForeignKey="true" />
       <Association Name="Period_Schedule" Member="Period" ThisKey="hour_id" OtherKey="id" Type="Period" IsForeignKey="true" />
+      <Association Name="Group_Schedule" Member="Group" ThisKey="group_id" OtherKey="id" Type="Group" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Semester" Member="Semesters">
@@ -93,14 +93,6 @@
       <Association Name="Teacher_Schedule" Member="Schedules" ThisKey="id" OtherKey="teacher_id" Type="Schedule" />
     </Type>
   </Table>
-  <Table Name="dbo.[Group]" Member="Groups">
-    <Type Name="Group">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="career_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Group_Schedule" Member="Schedules" ThisKey="id" OtherKey="group_id" Type="Schedule" />
-    </Type>
-  </Table>
   <Table Name="dbo.Period" Member="Periods">
     <Type Name="Period">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -109,6 +101,24 @@
       <Column Name="id_shift" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Period_Schedule" Member="Schedules" ThisKey="id" OtherKey="hour_id" Type="Schedule" />
       <Association Name="Shift_Period" Member="Shift" ThisKey="id_shift" OtherKey="id" Type="Shift" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Groups">
+    <Type Name="Group">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="career_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Classroom" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Group_Schedule" Member="Schedules" ThisKey="id" OtherKey="group_id" Type="Schedule" />
+      <Association Name="Career_Group" Member="Career" ThisKey="career_id" OtherKey="id" Type="Career" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Career" Member="Careers">
+    <Type Name="Career">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Career_Group" Member="Groups" ThisKey="id" OtherKey="career_id" Type="Group" />
     </Type>
   </Table>
 </Database>

@@ -45,7 +45,7 @@ body {
   text-align: center; }
   .signed-classes.deleted tbody > tr:nth-child(5) {
     display: none; }
-  .signed-classes tbody > tr > td:nth-child(2) {
+  .signed-classes tbody > tr > td:nth-child(1) {
     text-align: left; }
 
 .footer a {

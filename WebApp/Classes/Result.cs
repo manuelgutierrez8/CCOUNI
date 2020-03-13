@@ -5,6 +5,8 @@ using System.Web;
 
 namespace WebApp.App_Code
 {
+    public enum ClassStatus { Inscrita = 4, Descartada = 5, DescartadaEstudiante = 6, AprobadaEstudiante = 7, Confirmada = 8 }
+
     public class Result
     {
         public bool Status { get; set; }
@@ -19,11 +21,15 @@ namespace WebApp.App_Code
 
     public class StudentSchedule
     {
+        public int Id { get; set; }
         public int ClassId { get; set; }
         public string ClassName { get; set; }
         public int GroupId { get; set; }
         public string GroupName { get; set; }
         public int Credits { get; set; }
+        public string ClassroomName { get; set; }
+        public int statusId { get; set; }
+        public string StatusName { get; set; }
     }
 
     public class GetCurrentScheduleResult : Result
