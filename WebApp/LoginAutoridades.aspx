@@ -10,13 +10,13 @@
             <div class="col-10 col-sm-6 my-auto mx-auto login-box">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Estudiantes</a>
+                        <a class="nav-link" id="home-tab" href="../Login.aspx">Estudiantes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="docentes-tab" href="../LoginDocentes.aspx">Docentes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="autoridades-tab" href="../LoginAutoridades.aspx">Autoridades</a>
+                        <a class="nav-link active" id="autoridades-tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Autoridades</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">

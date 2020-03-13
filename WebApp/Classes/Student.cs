@@ -7,9 +7,9 @@ namespace WebApp.App_Code
 {
     public class Student
     {
-        public static StudentSchedule GetCurrentSchedule(int studentId)
+        public static GetCurrentScheduleResult GetCurrentSchedule(int studentId)
         {
-            StudentSchedule result = new StudentSchedule();
+            GetCurrentScheduleResult result = new GetCurrentScheduleResult();
 
             Model.dbModelDataContext model = new Model.dbModelDataContext();
 
@@ -26,14 +26,9 @@ namespace WebApp.App_Code
                                    GroupName = ss.Schedule.Group.name,
                                };
 
-                foreach (var s in schedule)
-                {
-                    Console.WriteLine(s);
-                }
-                               
-                               //model.Student_schedules.Where(s => s.current.Equals(true) && s.student_id.Equals(studentId)).Select< model.Users.Where(u => u.email.ToLower().Equals(username) && u.password.Equals(password)).FirstOrDefault();
-
-                
+                result.StudentScheduleList = schedule.ToList();
+                result.Status = true;
+                result.Message = "";
             }
             catch (Exception ex)
             {

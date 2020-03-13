@@ -22,7 +22,17 @@ namespace WebApp.Pages
                 if (userId != 0)
                 {
                     int studentId = Student.GetStudentId(userId);
-                    Student.GetCurrentSchedule(studentId);
+                    GetCurrentScheduleResult schedule = Student.GetCurrentSchedule(studentId);
+
+                    if (schedule.Status) {
+                        //GroupBy(x => x.Text).Select(x => x.FirstOrDefault());
+                        schedule.StudentScheduleList = schedule.StudentScheduleList.GroupBy(s=>s.ClassId).Select(s=>s.FirstOrDefault()).ToList();
+                        rptMenu.DataSource = schedule.StudentScheduleList;
+                        rptMenu.DataBind();
+                    }
+                }
+                else {
+                    Response.Redirect("../Login.aspx");
                 }
             }
             //table.CssClass = "abc edf";

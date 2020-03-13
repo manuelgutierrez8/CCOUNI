@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_uni.png" />
+    <Content Include="LoginAutoridades.aspx" />
+    <Content Include="LoginDocentes.aspx" />
     <Content Include="MasterPages\header.Master" />
     <Content Include="Assets\Solicitud Inscripcion.pdf" />
     <None Include="bundleconfig.json" />
@@ -116,17 +118,31 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\Auth.cs" />
-    <Compile Include="App_Code\MenuOption.cs" />
-    <Compile Include="App_Code\Result.cs" />
-    <Compile Include="App_Code\Student.cs" />
-    <Compile Include="App_Code\Utils.cs" />
+    <Compile Include="Classes\Auth.cs" />
+    <Compile Include="Classes\MenuOption.cs" />
+    <Compile Include="Classes\Result.cs" />
+    <Compile Include="Classes\Student.cs" />
+    <Compile Include="Classes\Utils.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginAutoridades.aspx.cs">
+      <DependentUpon>LoginAutoridades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginAutoridades.aspx.designer.cs">
+      <DependentUpon>LoginAutoridades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginDocentes.aspx.cs">
+      <DependentUpon>LoginDocentes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginDocentes.aspx.designer.cs">
+      <DependentUpon>LoginDocentes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

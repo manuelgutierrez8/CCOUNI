@@ -10,12 +10,11 @@ using WebApp.App_Code;
 
 namespace WebApp
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class LoginDocentes : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
+            if (!Page.IsPostBack) {
                 txtUsername.Text = "";
                 txtPassword.Text = "";
             }
@@ -37,19 +36,9 @@ namespace WebApp
                 if (result.Status)
                 {
                     int roleId = Convert.ToInt32(result.RoleId);
+                    Session["userId"] = result.UserId;
 
-                    //Esto es solo para estudiantes, si es otro rol, mostrar error 
-                    if (roleId != (int) Auth.Role.Student)
-                    {
-                        this.lbMessage.Text = "Estudiante no encontrado";
-                    }
-                    else
-                    {
-                        Session["userId"] = result.UserId;
-
-                        Response.Redirect(Auth.SetStartPage(roleId));
-                    }
-
+                    Response.Redirect(Auth.SetStartPage(roleId));
                 }
                 else
                 {

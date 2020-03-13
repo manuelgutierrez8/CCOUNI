@@ -7,6 +7,8 @@ namespace WebApp.App_Code
 {
     public static class Auth
     {
+        public enum Role { Admin = 1, Student = 2, Secretary = 3, Authority = 4 }
+
         public static LoginResult Login(string username, string password)
         {
             LoginResult result = new LoginResult();

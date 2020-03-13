@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/header.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebApp.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/header.Master" AutoEventWireup="true" CodeBehind="LoginDocentes.aspx.cs" Inherits="WebApp.LoginDocentes" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -10,10 +10,10 @@
             <div class="col-10 col-sm-6 my-auto mx-auto login-box">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Estudiantes</a>
+                        <a class="nav-link" id="docentes-tab" href="../Login.aspx">Estudiantes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="docentes-tab" href="../LoginDocentes.aspx">Docentes</a>
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Docentes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="autoridades-tab" href="../LoginAutoridades.aspx">Autoridades</a>
