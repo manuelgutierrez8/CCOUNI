@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Auth.cs" />
+    <Compile Include="Classes\Confirmacion.cs" />
     <Compile Include="Classes\MenuOption.cs" />
     <Compile Include="Classes\Result.cs" />
     <Compile Include="Classes\Student.cs" />

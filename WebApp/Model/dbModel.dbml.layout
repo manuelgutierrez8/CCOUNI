@@ -144,5 +144,25 @@
         <classShapeMoniker Id="d33b184b-e066-468a-b6ab-e731f44044b7" />
       </nodes>
     </associationConnector>
+    <classShape Id="e2240226-55b8-464e-a29d-e1ddbd42d0b5" absoluteBounds="9.5, 1.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/dbModelDataContext/Student_Confirmation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b21557f3-2a0b-4c12-be00-884461b3c3cf" absoluteBounds="9.515, 1.8350000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(12.4375005 : 3.625); (12.4375005 : 2.16429768880208); (11.5 : 2.16429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbModelDataContext/Semester/Semester_Student_Confirmation" />
+      <nodes>
+        <classShapeMoniker Id="4efc2727-fb8a-4915-8473-b2924e96ea5e" />
+        <classShapeMoniker Id="e2240226-55b8-464e-a29d-e1ddbd42d0b5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.75 : 3.28125); (10.40625 : 3.28125); (10.40625 : 2.95359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/dbModelDataContext/Student/Student_Student_Confirmation" />
+      <nodes>
+        <classShapeMoniker Id="b262644a-4cc6-4cc8-b3d0-46fe56b35391" />
+        <classShapeMoniker Id="e2240226-55b8-464e-a29d-e1ddbd42d0b5" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

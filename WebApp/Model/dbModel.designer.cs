@@ -66,6 +66,9 @@ namespace WebApp.Model
     partial void InsertCareer(Career instance);
     partial void UpdateCareer(Career instance);
     partial void DeleteCareer(Career instance);
+    partial void InsertStudent_Confirmation(Student_Confirmation instance);
+    partial void UpdateStudent_Confirmation(Student_Confirmation instance);
+    partial void DeleteStudent_Confirmation(Student_Confirmation instance);
     #endregion
 		
 		public dbModelDataContext() : 
@@ -191,6 +194,14 @@ namespace WebApp.Model
 			get
 			{
 				return this.GetTable<Career>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Student_Confirmation> Student_Confirmations
+		{
+			get
+			{
+				return this.GetTable<Student_Confirmation>();
 			}
 		}
 	}
@@ -533,6 +544,8 @@ namespace WebApp.Model
 		
 		private EntitySet<Student_schedule> _Student_schedules;
 		
+		private EntitySet<Student_Confirmation> _Student_Confirmations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -552,6 +565,7 @@ namespace WebApp.Model
 		public Student()
 		{
 			this._Student_schedules = new EntitySet<Student_schedule>(new Action<Student_schedule>(this.attach_Student_schedules), new Action<Student_schedule>(this.detach_Student_schedules));
+			this._Student_Confirmations = new EntitySet<Student_Confirmation>(new Action<Student_Confirmation>(this.attach_Student_Confirmations), new Action<Student_Confirmation>(this.detach_Student_Confirmations));
 			OnCreated();
 		}
 		
@@ -668,6 +682,19 @@ namespace WebApp.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Student_Confirmation", Storage="_Student_Confirmations", ThisKey="id", OtherKey="student_id")]
+		public EntitySet<Student_Confirmation> Student_Confirmations
+		{
+			get
+			{
+				return this._Student_Confirmations;
+			}
+			set
+			{
+				this._Student_Confirmations.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -695,6 +722,18 @@ namespace WebApp.Model
 		}
 		
 		private void detach_Student_schedules(Student_schedule entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = null;
+		}
+		
+		private void attach_Student_Confirmations(Student_Confirmation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Student = this;
+		}
+		
+		private void detach_Student_Confirmations(Student_Confirmation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Student = null;
@@ -1463,6 +1502,8 @@ namespace WebApp.Model
 		
 		private EntitySet<Schedule> _Schedules;
 		
+		private EntitySet<Student_Confirmation> _Student_Confirmations;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1482,6 +1523,7 @@ namespace WebApp.Model
 		public Semester()
 		{
 			this._Schedules = new EntitySet<Schedule>(new Action<Schedule>(this.attach_Schedules), new Action<Schedule>(this.detach_Schedules));
+			this._Student_Confirmations = new EntitySet<Student_Confirmation>(new Action<Student_Confirmation>(this.attach_Student_Confirmations), new Action<Student_Confirmation>(this.detach_Student_Confirmations));
 			OnCreated();
 		}
 		
@@ -1598,6 +1640,19 @@ namespace WebApp.Model
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Semester_Student_Confirmation", Storage="_Student_Confirmations", ThisKey="id", OtherKey="semester_id")]
+		public EntitySet<Student_Confirmation> Student_Confirmations
+		{
+			get
+			{
+				return this._Student_Confirmations;
+			}
+			set
+			{
+				this._Student_Confirmations.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1625,6 +1680,18 @@ namespace WebApp.Model
 		}
 		
 		private void detach_Schedules(Schedule entity)
+		{
+			this.SendPropertyChanging();
+			entity.Semester = null;
+		}
+		
+		private void attach_Student_Confirmations(Student_Confirmation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Semester = this;
+		}
+		
+		private void detach_Student_Confirmations(Student_Confirmation entity)
 		{
 			this.SendPropertyChanging();
 			entity.Semester = null;
@@ -2610,6 +2677,222 @@ namespace WebApp.Model
 		{
 			this.SendPropertyChanging();
 			entity.Career = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student_Confirmation")]
+	public partial class Student_Confirmation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _student_id;
+		
+		private int _semester_id;
+		
+		private System.Nullable<System.DateTime> _confirmation_date;
+		
+		private EntityRef<Semester> _Semester;
+		
+		private EntityRef<Student> _Student;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onstudent_idChanging(int value);
+    partial void Onstudent_idChanged();
+    partial void Onsemester_idChanging(int value);
+    partial void Onsemester_idChanged();
+    partial void Onconfirmation_dateChanging(System.Nullable<System.DateTime> value);
+    partial void Onconfirmation_dateChanged();
+    #endregion
+		
+		public Student_Confirmation()
+		{
+			this._Semester = default(EntityRef<Semester>);
+			this._Student = default(EntityRef<Student>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_student_id", DbType="Int NOT NULL")]
+		public int student_id
+		{
+			get
+			{
+				return this._student_id;
+			}
+			set
+			{
+				if ((this._student_id != value))
+				{
+					if (this._Student.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onstudent_idChanging(value);
+					this.SendPropertyChanging();
+					this._student_id = value;
+					this.SendPropertyChanged("student_id");
+					this.Onstudent_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_semester_id", DbType="Int NOT NULL")]
+		public int semester_id
+		{
+			get
+			{
+				return this._semester_id;
+			}
+			set
+			{
+				if ((this._semester_id != value))
+				{
+					if (this._Semester.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onsemester_idChanging(value);
+					this.SendPropertyChanging();
+					this._semester_id = value;
+					this.SendPropertyChanged("semester_id");
+					this.Onsemester_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_confirmation_date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> confirmation_date
+		{
+			get
+			{
+				return this._confirmation_date;
+			}
+			set
+			{
+				if ((this._confirmation_date != value))
+				{
+					this.Onconfirmation_dateChanging(value);
+					this.SendPropertyChanging();
+					this._confirmation_date = value;
+					this.SendPropertyChanged("confirmation_date");
+					this.Onconfirmation_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Semester_Student_Confirmation", Storage="_Semester", ThisKey="semester_id", OtherKey="id", IsForeignKey=true)]
+		public Semester Semester
+		{
+			get
+			{
+				return this._Semester.Entity;
+			}
+			set
+			{
+				Semester previousValue = this._Semester.Entity;
+				if (((previousValue != value) 
+							|| (this._Semester.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Semester.Entity = null;
+						previousValue.Student_Confirmations.Remove(this);
+					}
+					this._Semester.Entity = value;
+					if ((value != null))
+					{
+						value.Student_Confirmations.Add(this);
+						this._semester_id = value.id;
+					}
+					else
+					{
+						this._semester_id = default(int);
+					}
+					this.SendPropertyChanged("Semester");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Student_Confirmation", Storage="_Student", ThisKey="student_id", OtherKey="id", IsForeignKey=true)]
+		public Student Student
+		{
+			get
+			{
+				return this._Student.Entity;
+			}
+			set
+			{
+				Student previousValue = this._Student.Entity;
+				if (((previousValue != value) 
+							|| (this._Student.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Student.Entity = null;
+						previousValue.Student_Confirmations.Remove(this);
+					}
+					this._Student.Entity = value;
+					if ((value != null))
+					{
+						value.Student_Confirmations.Add(this);
+						this._student_id = value.id;
+					}
+					else
+					{
+						this._student_id = default(int);
+					}
+					this.SendPropertyChanged("Student");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

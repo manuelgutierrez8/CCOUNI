@@ -33,10 +33,10 @@ namespace WebApp.MasterPages
             option3.Url = "./Horario.aspx";
             itemList.Add(option3);
 
-            MenuOption option4 = new MenuOption();
+            /*MenuOption option4 = new MenuOption();
             option4.Title = "Solicitud Asignatura";
             option4.Url = "./SolicitudAsignatura.aspx";
-            itemList.Add(option4);
+            itemList.Add(option4);*/
 
             rptMenu.DataSource = itemList;
             rptMenu.DataBind();

@@ -5,6 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
         <div class="row">
+            <div class="col-12 text-right">
+                <asp:Button ID="btnConfirmClasses" Text="Imprimir" class="btn btn-primary" runat="server" OnClientClick="window.print();"/>
+            </div>
+        </div>
+        <div class="row">
                         <div name="ctl00$ContentPlaceHolder1$crvStudent$ctl01" id="ContentPlaceHolder1_crvStudent_ctl01" class="crystalstyle" style="overflow: hidden; width: 100%; height: 100%;">
         <div class="crystalstyle" style="margin-top: 24px; margin-bottom: 24px; margin-left: 24px; margin-right: 24px; left: 0px; width: 768px; height: 1008px; overflow: hidden;">
             <div id="Box1" class="ad154b2121-5479-4002-bf84-400e4b1248b2-2" style="z-index: 10; top: 327px; left: 2px; width: 751px; height: 16px;">
@@ -275,46 +280,28 @@
                         <tr>
                             <td>
                                 <%--Modifying here--%>
-                                <table width="768px" border="0" cellpadding="0" cellspacing="0">
+                                <asp:Repeater runat="server" ID="rptClasses">
+                                    <HeaderTemplate>
+                                        <table width="768px" border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
                                         <tr>
-                                            <td align="center" width="40px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1</span></td>
-                                            <td align="center" width="400px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">Filosofia</span></td>
-                                            <td align="center" width="80px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1M1-CO</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1030</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">5</span></td>
+                                            <td align="center" width="40px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"><%# Container.ItemIndex + 1 %></span></td>
+                                            <td align="center" width="400px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"><%# Eval("ClassName") %></span></td>
+                                            <td align="center" width="80px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"><%# Eval("GroupName") %></span></td>
+                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"><%# Eval("ClassroomName") %></span></td>
+                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"><%# Eval("Credits") %></span></td>
                                             <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
                                             <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
                                         </tr>
-                                        <tr>
-                                            <td align="center" width="40px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">2</span></td>
-                                            <td align="center" width="400px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">Introduccion a la Ingenieria en computación</span></td>
-                                            <td align="center" width="80px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1M1-CO</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1030</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">5</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td align="center" width="40px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">3</span></td>
-                                            <td align="center" width="400px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">Geometría Analitica y Descriptiva</span></td>
-                                            <td align="center" width="80px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1M1-CO</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1030</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">5</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
-                                        </tr>
-                                        <%--<tr>
-                                            <td align="center" width="40px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">4</span></td>
-                                            <td align="center" width="400px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">Ingles I</span></td>
-                                            <td align="center" width="80px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1M1-CO</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">1030</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">5</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
-                                            <td align="center" width="60px" nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">&nbsp;</span></td>
-                                        </tr>--%>
-                                    </tbody>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                         </tbody>
                                 </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                               
                             </td>
                         </tr>
                     </tbody>

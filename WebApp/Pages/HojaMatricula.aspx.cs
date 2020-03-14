@@ -22,13 +22,31 @@ namespace WebApp.Pages
 
                 if (student != null && studentSchedule != null)
                 {
-                    Console.Write("stutent");
+                    SetClassList();
                 }
                 else
                 {
                     Response.Redirect("../Login.aspx");
                 }
             }
+        }
+
+        private void SetClassList()
+        {
+            List<StudentSchedule> finalList;
+
+            if (Classes.Confirmacion.IsStudentConfirmed(this.student.id))
+            {
+                finalList = this.studentSchedule.Where(ss => ss.statusId == (int)ClassStatus.Confirmada).ToList();
+            }
+            else
+            {
+                finalList = this.studentSchedule.Where(ss => ss.statusId == (int)ClassStatus.Inscrita
+                                            || ss.statusId == (int)ClassStatus.DescartadaEstudiante).ToList();
+            }
+
+            rptClasses.DataSource = finalList;
+            rptClasses.DataBind();
         }
     }
 }

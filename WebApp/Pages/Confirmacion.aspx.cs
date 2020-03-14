@@ -42,6 +42,7 @@ namespace WebApp.Pages
                             //GroupBy(x => x.Text).Select(x => x.FirstOrDefault());
                             schedule.StudentScheduleList = schedule.StudentScheduleList.GroupBy(s => s.ClassId).Select(s => s.FirstOrDefault()).ToList();
                             rptMenu.DataSource = schedule.StudentScheduleList;
+                            Session["scheduleList"] = schedule.StudentScheduleList;
                             rptMenu.DataBind();
 
                             SetStudentInformation();
