@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo_uni.png" />
+    <Content Include="bin\AjaxControlToolkit.dll" />
+    <Content Include="bin\WebApp.dll" />
+    <Content Include="bin\WebApp.pdb" />
     <Content Include="LoginAutoridades.aspx" />
     <Content Include="LoginDocentes.aspx" />
     <Content Include="MasterPages\header.Master" />
@@ -123,6 +126,7 @@
     <Compile Include="Classes\Confirmacion.cs" />
     <Compile Include="Classes\MenuOption.cs" />
     <Compile Include="Classes\Result.cs" />
+    <Compile Include="Classes\Schedule.cs" />
     <Compile Include="Classes\Student.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Default.aspx.cs">

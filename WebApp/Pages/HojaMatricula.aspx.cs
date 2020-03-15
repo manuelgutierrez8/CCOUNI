@@ -35,6 +35,8 @@ namespace WebApp.Pages
         {
             List<StudentSchedule> finalList;
 
+            finalList = Student.GetCurrentSchedule(this.student.id).StudentScheduleList;
+
             if (Classes.Confirmacion.IsStudentConfirmed(this.student.id))
             {
                 finalList = this.studentSchedule.Where(ss => ss.statusId == (int)ClassStatus.Confirmada).ToList();

@@ -60,6 +60,9 @@ namespace WebApp.Pages
         protected void btnConfirmClasses_Click(object sender, EventArgs e)
         {
             Session["scheduleList"] = schedule.StudentScheduleList;
+
+            Classes.Confirmacion.ConfirmClasses(this.student.id);
+
             Response.Redirect("HojaMatricula.aspx", true);
         }
 
@@ -69,6 +72,18 @@ namespace WebApp.Pages
 
             Session["scheduleId"] = scheduleId;
             Response.Redirect("./EliminarAsignatura.aspx", true);
+        }
+
+        protected void btnAdd_Command(object sender, CommandEventArgs e)
+        {
+            string scheduleId = e.CommandArgument.ToString();
+
+            Session["scheduleId"] = scheduleId;
+
+            Model.Schedule x = Classes.Schedule.GetSchedule(Convert.ToInt32(scheduleId));
+
+            Classes.Schedule.UpdateScheduleStatus(this.student.id, x, ClassStatus.Inscrita);
+            Response.Redirect(Request.RawUrl);
         }
 
         private void SetStudentInformation()

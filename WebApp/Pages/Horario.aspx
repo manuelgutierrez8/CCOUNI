@@ -9,13 +9,13 @@
                 <h1 class="text-center">Horario de Clases</h1>
             </div>
             <div class="col-sm-12 col-md-6 mb-md-5">
-                <p class="page-subtitle"><b>Nombres y Apellidos:</b> Manuel Abraham Gutiérrez</p>
-                <p class="page-subtitle"><b>Carrera:</b> Ingeniería en Computación</p>
-                <p class="page-subtitle"><b>Semestre:</b> Segundo Semestre 2019</p>
+                <p class="page-subtitle"><b>Nombres y Apellidos:</b>&nbsp;<asp:Label ID="lbStudentName" Text="" runat="server" /> </p>
+                <p class="page-subtitle"><b>Carrera:</b>&nbsp;<asp:Label ID="lbStudentCareer" Text="" runat="server" /></p>
+                <p class="page-subtitle"><b>Semestre:</b>&nbsp;<asp:Label ID="lbCurrentSemester" Text="" runat="server" /></p>
             </div>
             <div class="col-sm-12 col-md-6 mb-5">
-                <p class="page-subtitle"><b>Carnet:</b> 2008-23295</p>
-                <p class="page-subtitle"><b>Turno:</b> Diurno</p>
+                 <p class="page-subtitle"><b>Carnet:</b>&nbsp;<asp:Label ID="lbStudentLicense" Text="" runat="server" /></p>
+                <p class="page-subtitle"><b>Turno:</b>&nbsp;<asp:Label ID="lbStudentPeriod" Text="" runat="server" /></p>
             </div>
 
             <div class="col-12 mb-5">

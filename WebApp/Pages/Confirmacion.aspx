@@ -58,7 +58,7 @@
                                      <i class="fas fa-trash-alt delete-icon"></i>
                                 </asp:LinkButton>
                                 <asp:LinkButton runat="server" ID="LinkButton1" CssClass='<%# DisplayAddButton(Eval("Id")) %>'
-                                    CausesValidation="false" OnCommand="btnDelete_Command" CommandArgument='<%# Eval("Id") %>' ToolTip="Añadir Asignatura">
+                                    CausesValidation="false" OnCommand="btnAdd_Command" CommandArgument='<%# Eval("Id") %>' ToolTip="Añadir Asignatura">
                                      <i class="fas fa-plus-circle success"></i>
                                 </asp:LinkButton>
                             </td>
