@@ -65,6 +65,10 @@ body {
   .btn, .btn-primary {
     display: none; } }
 
+.students-table tbody .content-row:hover {
+  background-color: skyblue;
+  font-weight: bold; }
+
 /*Hoja Matricula*/
 div.crystalstyle div {
   position: absolute;

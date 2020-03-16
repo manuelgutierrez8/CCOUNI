@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebApp.Classes;
 
 namespace WebApp.App_Code
 {
@@ -55,6 +56,42 @@ namespace WebApp.App_Code
             Model.dbModelDataContext model = new Model.dbModelDataContext();
 
             return model.Students.Where(s => s.id.Equals(studentId)).FirstOrDefault();
+        }
+
+        public static GetStudentsByFilterResult FilterStudents(string filter)
+        {
+            GetStudentsByFilterResult result = new GetStudentsByFilterResult();
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+            try
+            {
+                var query = from ss in model.Student_schedules
+                            where ss.current == true && (ss.Student.first_name + ' ' + ss.Student.last_name).ToLower().Contains(filter.ToLower())
+                                    || ss.Student.license.Contains(filter)
+                            select new StudentFiltered
+                            {
+                                License = ss.Student.license,
+                                CareerId = ss.Schedule.Group.Career.id,
+                                CareerName = ss.Schedule.Group.Career.name,
+                                StudentId = ss.Student.id,
+                                StudentName = ss.Student.first_name + ' ' + ss.Student.last_name,
+                                GroupId = (int)ss.Schedule.group_id,
+                                GroupName = ss.Schedule.Group.name,
+                            };
+
+                result.FilteredStudents = query.GroupBy(f => f.StudentId).Select(s => s.FirstOrDefault()).ToList();
+
+                result.Message = "Filtro completado";
+                result.Status = true;
+            }
+            catch (Exception ex)
+            {
+                result.FilteredStudents = new List<StudentFiltered>();
+                result.Message = ex.Message;
+                result.Status = false;
+            }
+
+            return result;
         }
     }
 }

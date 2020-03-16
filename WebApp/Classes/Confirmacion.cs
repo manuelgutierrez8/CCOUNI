@@ -20,8 +20,10 @@ namespace WebApp.Classes
 
             Model.Semester currentSemester = GetCurrentSemester();
 
-            return model.Student_Confirmations.Where(sc => sc.student_id == studentId
-                                                    && sc.semester_id == currentSemester.id).Count() > 0;
+            int count = model.Student_Confirmations.Where(sc => sc.student_id == studentId
+                                                    && sc.semester_id == currentSemester.id).Count();
+
+            return count > 0;
         }
 
         public static Result ConfirmClasses(int studentId)

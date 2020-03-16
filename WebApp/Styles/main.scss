@@ -77,7 +77,7 @@ body {
 
 @media print {
     nav, footer, footer p {
-        display:none;
+        display: none;
     }
 
     .no-print {
@@ -89,6 +89,14 @@ body {
     }
 }
 
+.students-table {
+    tbody .content-row {
+        &:hover {
+            background-color: skyblue;
+            font-weight: bold;
+        }
+    }
+}
 
 
 /*Hoja Matricula*/

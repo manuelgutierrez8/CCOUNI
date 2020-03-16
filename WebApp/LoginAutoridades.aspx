@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/header.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WebApp.Login" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/header.Master" AutoEventWireup="true" CodeBehind="LoginAutoridades.aspx.cs" Inherits="WebApp.LoginAutoridades" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -12,9 +12,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="home-tab" href="../Login.aspx">Estudiantes</a>
                     </li>
-                    <li class="nav-item">
+                   <%-- <li class="nav-item">
                         <a class="nav-link" id="docentes-tab" href="../LoginDocentes.aspx">Docentes</a>
-                    </li>
+                    </li>--%>
                     <li class="nav-item">
                         <a class="nav-link active" id="autoridades-tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Autoridades</a>
                     </li>

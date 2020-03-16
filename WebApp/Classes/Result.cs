@@ -36,4 +36,20 @@ namespace WebApp.App_Code
     {
         public List<StudentSchedule> StudentScheduleList { get; set; }
     }
+
+    public class StudentFiltered
+    {
+        public int StudentId { get; set; }
+        public string StudentName { get; set; }
+        public string License { get; set; }
+        public int CareerId { get; set; }
+        public string CareerName { get; set; }
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
+    }
+
+    public class GetStudentsByFilterResult : Result
+    {
+        public List<StudentFiltered> FilteredStudents { get; set; }
+    }
 }

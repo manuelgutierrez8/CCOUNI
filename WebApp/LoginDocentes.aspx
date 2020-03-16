@@ -12,9 +12,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="docentes-tab" href="../Login.aspx">Estudiantes</a>
                     </li>
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Docentes</a>
-                    </li>
+                    </li>--%>
                     <li class="nav-item">
                         <a class="nav-link" id="autoridades-tab" href="../LoginAutoridades.aspx">Autoridades</a>
                     </li>

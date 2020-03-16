@@ -27,7 +27,7 @@ namespace WebApp.Pages
 
                 if (userId != 0)
                 {
-                    int studentId = Student.GetStudentId(userId);
+                    int studentId = Session["studentId"] != null ? Convert.ToInt32(Session["studentId"]) : Student.GetStudentId(userId);
 
                     if (studentId != 0)
                     {
