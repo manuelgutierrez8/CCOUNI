@@ -69,6 +69,10 @@ body {
   background-color: skyblue;
   font-weight: bold; }
 
+.report-link {
+  color: #003782;
+  font-size: 20px; }
+
 /*Hoja Matricula*/
 div.crystalstyle div {
   position: absolute;

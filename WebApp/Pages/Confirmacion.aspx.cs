@@ -19,7 +19,6 @@ namespace WebApp.Pages
             {
                 this.student = (Model.Student)Session["student"];
                 this.schedule = (GetCurrentScheduleResult)Session["schedule"];
-                tbSignedClasses.CssClass = "table table-striped table-responsive-sm signed-classes deleted";
             }
             else
             {

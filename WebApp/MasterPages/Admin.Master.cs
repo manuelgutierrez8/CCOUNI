@@ -24,10 +24,15 @@ namespace WebApp.MasterPages
             option2.Url = "./Busqueda.aspx";
             itemList.Add(option2);
 
-            MenuOption option1 = new MenuOption();
-            option1.Title = "Confirmación";
-            option1.Url = "./Confirmacion.aspx";
-            itemList.Add(option1);
+            //MenuOption option1 = new MenuOption();
+            //option1.Title = "Confirmación";
+            //option1.Url = "./Confirmacion.aspx";
+            //itemList.Add(option1);
+
+            MenuOption option3 = new MenuOption();
+            option3.Title = "Reportes";
+            option3.Url = "./Reportes.aspx";
+            itemList.Add(option3);
 
 
             rptMenu.DataSource = itemList;

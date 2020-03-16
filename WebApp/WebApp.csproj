@@ -73,6 +73,7 @@
     <Content Include="LoginDocentes.aspx" />
     <Content Include="MasterPages\header.Master" />
     <Content Include="Assets\Solicitud Inscripcion.pdf" />
+    <Content Include="Assets\confirmados.csv" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -90,6 +91,7 @@
       <DependentUpon>dbModel.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\CCOUNI - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Pages\Busqueda.aspx" />
     <Content Include="Pages\Confirmacion.aspx" />
@@ -97,6 +99,7 @@
     <Content Include="Pages\EliminarAsignatura.aspx" />
     <Content Include="Pages\HojaMatricula.aspx" />
     <Content Include="Pages\Horario.aspx" />
+    <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\RevisionSolicitud.aspx" />
     <Content Include="Pages\SolicitudAsignatura.aspx" />
     <Content Include="Scripts\main.js" />
@@ -224,6 +227,13 @@
     </Compile>
     <Compile Include="Pages\Horario.aspx.designer.cs">
       <DependentUpon>Horario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\RevisionSolicitud.aspx.cs">
       <DependentUpon>RevisionSolicitud.aspx</DependentUpon>

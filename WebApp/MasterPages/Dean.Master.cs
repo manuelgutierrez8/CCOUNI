@@ -19,10 +19,15 @@ namespace WebApp.MasterPages
         {
             List<MenuOption> itemList = new List<MenuOption>();
 
-            MenuOption option2 = new MenuOption();
+            /*MenuOption option2 = new MenuOption();
             option2.Title = "Solicitud Asignaturas";
             option2.Url = "./RevisionSolicitud.aspx";
-            itemList.Add(option2);
+            itemList.Add(option2);*/
+
+            MenuOption option1 = new MenuOption();
+            option1.Title = "Reportes";
+            option1.Url = "./Reportes.aspx";
+            itemList.Add(option1);
 
             rptMenu.DataSource = itemList;
             rptMenu.DataBind();

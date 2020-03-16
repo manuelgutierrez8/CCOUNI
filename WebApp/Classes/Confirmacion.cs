@@ -68,5 +68,28 @@ namespace WebApp.Classes
 
             return result;
         }
+
+        public static GetConfirmedStudentReportResult GetConfirmedStudentReport(int semesterId)
+        {
+            GetConfirmedStudentReportResult result = new GetConfirmedStudentReportResult();
+
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+            var filteredList = from sc in model.Student_Confirmations
+                               where sc.semester_id == semesterId
+                               select new ConfirmedStudent
+                               {
+                                   CareerName = "Ing. Computación",
+                                   GroupName = "1M1-CO",
+                                   StudentId = sc.student_id,
+                                   StudentName = sc.Student.first_name + ' ' + sc.Student.last_name,
+                                   License = sc.Student.license,
+                                   ConfirmationDate = Convert.ToDateTime(sc.confirmation_date),
+                               };
+
+            result.confirmedStudents = filteredList.ToList();
+
+            return result;
+        }
     }
 }

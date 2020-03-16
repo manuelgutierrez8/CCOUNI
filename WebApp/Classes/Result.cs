@@ -52,4 +52,21 @@ namespace WebApp.App_Code
     {
         public List<StudentFiltered> FilteredStudents { get; set; }
     }
+
+    public class ConfirmedStudent
+    {
+        public int StudentId { get; set; }
+        public string StudentName { get; set; }
+        public string License { get; set; }
+        public int CareerId { get; set; }
+        public string CareerName { get; set; }
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
+        public DateTime ConfirmationDate { get; set; }
+    }
+
+    public class GetConfirmedStudentReportResult : Result
+    {
+        public List<ConfirmedStudent> confirmedStudents { get; set; }
+    }
 }
