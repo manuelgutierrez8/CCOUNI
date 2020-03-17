@@ -18,10 +18,12 @@ namespace WebApp.Pages
             if (!Page.IsPostBack)
             {
                 student = (Model.Student)Session["student"];
-                studentSchedule = (List<StudentSchedule>)Session["scheduleList"];
+                 //(List<StudentSchedule>)Session["scheduleList"];
 
-                if (student != null && studentSchedule != null)
+                if (student != null)
                 {
+                    studentSchedule = App_Code.Student.GetCurrentSchedule(this.student.id).StudentScheduleList;
+                    studentSchedule = studentSchedule.GroupBy(s => s.ClassId).Select(s => s.FirstOrDefault()).ToList();
                     SetClassList();
                 }
                 else
@@ -35,14 +37,19 @@ namespace WebApp.Pages
         {
             List<StudentSchedule> finalList;
 
+            //Obtener todas las clases registradas para el estudiante 
+            //en el semestre
             finalList = Student.GetCurrentSchedule(this.student.id).StudentScheduleList;
 
+            //El alumno ya confirmó clases?
             if (Classes.Confirmacion.IsStudentConfirmed(this.student.id))
             {
+                //Mostrar solo las clases confirmadas
                 finalList = this.studentSchedule.Where(ss => ss.statusId == (int)ClassStatus.Confirmada).ToList();
             }
             else
             {
+                //Mostrar las clases inscritas, ya que no se ha ejecutado la confirmación
                 finalList = this.studentSchedule.Where(ss => ss.statusId == (int)ClassStatus.Inscrita
                                             || ss.statusId == (int)ClassStatus.DescartadaEstudiante).ToList();
             }

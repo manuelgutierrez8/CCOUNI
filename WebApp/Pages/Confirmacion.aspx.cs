@@ -33,18 +33,25 @@ namespace WebApp.Pages
                         this.student = Student.GetStudentById(studentId);
                         Session["student"] = this.student;
 
-                        schedule = Student.GetCurrentSchedule(studentId);
-
-                        if (schedule.Status)
+                        if (!Classes.Confirmacion.IsStudentConfirmed(studentId))
                         {
-                            Session["schedule"] = schedule;
-                            //GroupBy(x => x.Text).Select(x => x.FirstOrDefault());
-                            schedule.StudentScheduleList = schedule.StudentScheduleList.GroupBy(s => s.ClassId).Select(s => s.FirstOrDefault()).ToList();
-                            rptMenu.DataSource = schedule.StudentScheduleList;
-                            Session["scheduleList"] = schedule.StudentScheduleList;
-                            rptMenu.DataBind();
+                            schedule = Student.GetCurrentSchedule(studentId);
 
-                            SetStudentInformation();
+                            if (schedule.Status)
+                            {
+                                Session["schedule"] = schedule;
+                                //GroupBy(x => x.Text).Select(x => x.FirstOrDefault());
+                                schedule.StudentScheduleList = schedule.StudentScheduleList.GroupBy(s => s.ClassId).Select(s => s.FirstOrDefault()).ToList();
+                                rptMenu.DataSource = schedule.StudentScheduleList;
+                                Session["scheduleList"] = schedule.StudentScheduleList;
+                                rptMenu.DataBind();
+
+                                SetStudentInformation();
+                            }
+                        }
+                        else
+                        {
+                            Response.Redirect("./HojaMatricula.aspx");
                         }
                     }
                 }
@@ -61,6 +68,7 @@ namespace WebApp.Pages
             Session["scheduleList"] = schedule.StudentScheduleList;
 
             Classes.Confirmacion.ConfirmClasses(this.student.id);
+            Classes.Confirmacion.RegisterStudentConfirmation(this.student.id);
 
             Response.Redirect("HojaMatricula.aspx", true);
         }

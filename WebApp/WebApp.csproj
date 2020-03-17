@@ -67,8 +67,6 @@
   <ItemGroup>
     <Content Include="Assets\logo_uni.png" />
     <Content Include="bin\AjaxControlToolkit.dll" />
-    <Content Include="bin\WebApp.dll" />
-    <Content Include="bin\WebApp.pdb" />
     <Content Include="LoginAutoridades.aspx" />
     <Content Include="LoginDocentes.aspx" />
     <Content Include="MasterPages\header.Master" />

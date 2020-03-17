@@ -20,9 +20,12 @@ namespace WebApp.Classes
 
             Model.Semester currentSemester = GetCurrentSemester();
 
+            //Obtener el total de registros en la tabla
+            //de bitacora de confirmaciones para un estudiante
             int count = model.Student_Confirmations.Where(sc => sc.student_id == studentId
                                                     && sc.semester_id == currentSemester.id).Count();
 
+            //Si es mayor a 0, está confirmado para el semestre
             return count > 0;
         }
 
@@ -37,23 +40,28 @@ namespace WebApp.Classes
 
                 Model.Semester currentSemester = GetCurrentSemester();
 
-                semesterSchedule = model.Student_schedules.Where(ss => ss.student_id == studentId && ss.Schedule.Semester.id == currentSemester.id).ToList();
+                //Obtener semestre actual
+                semesterSchedule = model.Student_schedules.Where(ss => ss.student_id == studentId 
+                                        && ss.Schedule.Semester.id == currentSemester.id).ToList();
 
-                foreach (Model.Student_schedule item in semesterSchedule)
+                //Por cada clase que el estudiante haya inscrito, cambiar el estado
+                //A cconfirmada o descartada
+                foreach (var item in semesterSchedule)
                 {
                     switch (item.status_id)
                     {
-                        case (int)ClassStatus.DescartadaEstudiante:
-                            item.status_id = (int)ClassStatus.Descartada;
+                        case (int) ClassStatus.DescartadaEstudiante:
+                            item.status_id = (int) ClassStatus.Descartada;
                             break;
                         case (int)ClassStatus.Inscrita:
-                            item.status_id = (int)ClassStatus.Confirmada;
+                            item.status_id = (int) ClassStatus.Confirmada;
                             break;
                         default: break;
 
                     }
                 }
 
+                //Guardar Información en la BD
                 model.SubmitChanges();
 
                 result.Status = true;
@@ -90,6 +98,47 @@ namespace WebApp.Classes
             result.confirmedStudents = filteredList.ToList();
 
             return result;
+        }
+
+        /// <summary>
+        /// Guarda el registro de confirmación del estudiante
+        /// </summary>
+        /// <param name="studentId">Id del estudiante</param>
+        public static Result RegisterStudentConfirmation(int studentId)
+        {
+            //Objeto de tipo resultado, para retornar la respuesta
+            Result result = new Result();
+
+            try
+            {
+                //Instancia del modelo de base de datos
+                Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+                //Obtener el semestre actual para guardar el registro
+                Model.Semester currentSemster = GetCurrentSemester();
+
+                //Objeto de tipo Student_Confirmation, el cual equivale a una nueva fila en la Base de datos
+                Model.Student_Confirmation studentConfirmation = new Model.Student_Confirmation();
+
+                //Añadir la infromación al objeto
+                studentConfirmation.confirmation_date = DateTime.Now;
+                studentConfirmation.student_id = studentId;
+                studentConfirmation.semester_id = currentSemster.id;
+
+                //Insertar el registro en la tabla 
+                model.Student_Confirmations.InsertOnSubmit(studentConfirmation);
+                model.SubmitChanges();
+
+                result.Message = "Registro de confirmación guardado";
+                result.Status = true;
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+                result.Status = false;
+            }
+             return result;
+            
         }
     }
 }

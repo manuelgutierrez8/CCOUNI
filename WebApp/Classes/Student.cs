@@ -16,6 +16,8 @@ namespace WebApp.App_Code
 
             try
             {
+                //Seleccionar los registros de clases inscritas del estudiante
+                //para el semestre actual
                 var schedule = from ss in model.Student_schedules
                                where ss.current == true && ss.student_id == studentId
                                select new StudentSchedule
