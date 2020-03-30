@@ -5,11 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container py-2">
         <div class="row">
+            <span style="position: absolute; right: 10px; color: #003782; font-size: 24px;" data-toggle="modal" data-target="#exampleModalCenter">
+                <i class="fas fa-question-circle"></i>
+            </span>
             <div class="col-12 mb-5">
                 <h1 class="text-center">Confimación de asignaturas</h1>
             </div>
             <div class="col-sm-12 col-md-6 mb-md-5">
-                <p class="page-subtitle"><b>Nombres y Apellidos:</b>&nbsp;<asp:Label ID="lbStudentName" Text="" runat="server" /> </p>
+                <p class="page-subtitle">
+                    <b>Nombres y Apellidos:</b>&nbsp;<asp:Label ID="lbStudentName" Text="" runat="server" />
+                </p>
                 <p class="page-subtitle"><b>Carrera:</b>&nbsp;<asp:Label ID="lbStudentCareer" Text="" runat="server" /></p>
                 <p class="page-subtitle"><b>Semestre:</b>&nbsp;<asp:Label ID="lbCurrentSemester" Text="" runat="server" /></p>
             </div>
@@ -74,7 +79,7 @@
                 <asp:Button ID="btnConfirmClasses" Text="Confirmar" class="btn btn-primary" runat="server" OnClientClick="return confirm('¿Desea guardar los cambios? Esta acción no se puede deshacer');" OnClick="btnConfirmClasses_Click" />
             </div>
         </div>
-        <asp:HiddenField ID="hfScheduleId" runat="server"/>
+        <asp:HiddenField ID="hfScheduleId" runat="server" />
 
     </div>
     <div class="modal fade" id="reasonModal" tabindex="-1" role="dialog" aria-labelledby="reasonModalLabel" aria-hidden="true">
@@ -104,6 +109,57 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <asp:Button CssClass="btn btn-primary" ID="btnDeleteClass" runat="server" Text="Aceptar" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmación de clases</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        En esta página puede descartar o confirmar las clases que estan inscritas en este semestre
+                    </p>
+                    <p><b>Acciones</b></p>
+                    <ul>
+                        <li>
+                            <i class="fas fa-trash-alt delete-icon"></i>
+                            <span>Descartar una asignatura</span>
+                        </li>
+                        <br />
+                        <li>
+                            <i class="fas fa-plus-circle text-success"></i>
+                            <span>Inscribir la asignatura desactivada</span>
+                        </li>
+                        <br />
+                        <li>
+                            <span class="btn btn-primary">Confirmar
+                            </span>
+                            <span>Guarda la información de confirmación, esta acción no se puede deshacer</span>
+                        </li>
+                        <br />
+                    </ul>
+                    <p><b>Estado de las asignaturas</b></p>
+                    <ul>
+                        <li>
+                            <i class="fas fa-circle text-success"></i> Inscrita
+                        </li>
+                        <br />
+                        <li>
+                            <i class="fas fa-circle text-warning"></i> Descartada, esperando guardar cambios, 
+                            esta acción se puede revertir seleccionando la opción <i class="fas fa-plus-circle text-success"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
