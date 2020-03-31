@@ -63,10 +63,34 @@ namespace WebApp.App_Code
         public int GroupId { get; set; }
         public string GroupName { get; set; }
         public DateTime ConfirmationDate { get; set; }
+        public int TeacherId { get; set; }
+        public string TeacherName { get; set; }
+    }
+
+    public class TeacherReportRow
+    {
+        public int StudentId { get; set; }
+        public string StudentName { get; set; }
+        public string License { get; set; }
+        public int CareerId { get; set; }
+        public string CareerName { get; set; }
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
+        public DateTime ConfirmationDate { get; set; }
+        public int TeacherId { get; set; }
+        public string TeacherName { get; set; }
+        public int ClassId { get; set; }
+        public string ClassName { get; set; }
     }
 
     public class GetConfirmedStudentReportResult : Result
     {
         public List<ConfirmedStudent> confirmedStudents { get; set; }
     }
+
+    public class TeacherReportResult : Result
+    {
+        public List<TeacherReportRow> confirmedStudents { get; set; }
+    }
+
 }

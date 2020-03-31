@@ -41,7 +41,7 @@ namespace WebApp.Classes
                 Model.Semester currentSemester = GetCurrentSemester();
 
                 //Obtener semestre actual
-                semesterSchedule = model.Student_schedules.Where(ss => ss.student_id == studentId 
+                semesterSchedule = model.Student_schedules.Where(ss => ss.student_id == studentId
                                         && ss.Schedule.Semester.id == currentSemester.id).ToList();
 
                 //Por cada clase que el estudiante haya inscrito, cambiar el estado
@@ -50,11 +50,11 @@ namespace WebApp.Classes
                 {
                     switch (item.status_id)
                     {
-                        case (int) ClassStatus.DescartadaEstudiante:
-                            item.status_id = (int) ClassStatus.Descartada;
+                        case (int)ClassStatus.DescartadaEstudiante:
+                            item.status_id = (int)ClassStatus.Descartada;
                             break;
                         case (int)ClassStatus.Inscrita:
-                            item.status_id = (int) ClassStatus.Confirmada;
+                            item.status_id = (int)ClassStatus.Confirmada;
                             break;
                         default: break;
 
@@ -92,10 +92,39 @@ namespace WebApp.Classes
                                    StudentId = sc.student_id,
                                    StudentName = sc.Student.first_name + ' ' + sc.Student.last_name,
                                    License = sc.Student.license,
-                                   ConfirmationDate = Convert.ToDateTime(sc.confirmation_date),
+                                   ConfirmationDate = Convert.ToDateTime(sc.confirmation_date)
                                };
 
             result.confirmedStudents = filteredList.ToList();
+
+            return result;
+        }
+
+        public static TeacherReportResult GetTeacherReport(int semesterId, int teacherId, int classId)
+        {
+            TeacherReportResult result = new TeacherReportResult();
+
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+            var filteredList = from ss in model.Student_schedules
+                               join sch in model.Schedules on ss.schedule_id equals sch.id
+                               join t in model.Teachers on sch.teacher_id equals t.id
+                               where sch.semester_id == semesterId && t.id == teacherId
+                               && sch.class_id == classId && ss.status_id == (int)ClassStatus.Confirmada
+                               select new TeacherReportRow
+                               {
+                                   CareerName = "Ing. Computación",
+                                   GroupName = "1M1-CO",
+                                   StudentId = (int)ss.student_id,
+                                   StudentName = ss.Student.first_name + ' ' + ss.Student.last_name,
+                                   License = ss.Student.license,
+                                   ClassId = sch.Class.id,
+                                   ClassName = sch.Class.name,
+                                   TeacherId = sch.Teacher.id,
+                                   TeacherName = sch.Teacher.name
+                               };
+
+            result.confirmedStudents = filteredList.GroupBy(f => f.StudentId).Select(s => s.FirstOrDefault()).ToList();
 
             return result;
         }
@@ -137,8 +166,8 @@ namespace WebApp.Classes
                 result.Message = ex.Message;
                 result.Status = false;
             }
-             return result;
-            
+            return result;
+
         }
     }
 }
