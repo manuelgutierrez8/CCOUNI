@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApp.App_Code;
+using WebApp.Classes;
 
 namespace WebApp.Pages
 {
@@ -22,6 +23,8 @@ namespace WebApp.Pages
             }
             else
             {
+
+
                 int userId = Convert.ToInt32(Session["userId"]);
 
                 if (userId != 0)
@@ -33,25 +36,32 @@ namespace WebApp.Pages
                         this.student = Student.GetStudentById(studentId);
                         Session["student"] = this.student;
 
-                        if (!Classes.Confirmacion.IsStudentConfirmed(studentId))
+                        if (Classes.Confirmacion.isValidDateToConfirm(Classes.Confirmacion.GetCurrentSemester().id).Status)
                         {
-                            schedule = Student.GetCurrentSchedule(studentId);
-
-                            if (schedule.Status)
+                            if (!Classes.Confirmacion.IsStudentConfirmed(studentId))
                             {
-                                Session["schedule"] = schedule;
-                                //GroupBy(x => x.Text).Select(x => x.FirstOrDefault());
-                                schedule.StudentScheduleList = schedule.StudentScheduleList.GroupBy(s => s.ClassId).Select(s => s.FirstOrDefault()).ToList();
-                                rptMenu.DataSource = schedule.StudentScheduleList;
-                                Session["scheduleList"] = schedule.StudentScheduleList;
-                                rptMenu.DataBind();
+                                schedule = Student.GetCurrentSchedule(studentId);
 
-                                SetStudentInformation();
+                                if (schedule.Status)
+                                {
+                                    Session["schedule"] = schedule;
+                                    //GroupBy(x => x.Text).Select(x => x.FirstOrDefault());
+                                    schedule.StudentScheduleList = schedule.StudentScheduleList.GroupBy(s => s.ClassId).Select(s => s.FirstOrDefault()).ToList();
+                                    rptMenu.DataSource = schedule.StudentScheduleList;
+                                    Session["scheduleList"] = schedule.StudentScheduleList;
+                                    rptMenu.DataBind();
+
+                                    SetStudentInformation();
+                                }
+                            }
+                            else
+                            {
+                                Response.Redirect("./HojaMatricula.aspx");
                             }
                         }
                         else
                         {
-                            Response.Redirect("./HojaMatricula.aspx");
+                            Response.Redirect("./PeriodoVencido.aspx");
                         }
                     }
                 }
@@ -59,6 +69,7 @@ namespace WebApp.Pages
                 {
                     Response.Redirect("../Login.aspx");
                 }
+
             }
             //table.CssClass = "abc edf";
         }

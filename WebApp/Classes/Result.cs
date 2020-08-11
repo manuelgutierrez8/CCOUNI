@@ -93,4 +93,11 @@ namespace WebApp.App_Code
         public List<TeacherReportRow> confirmedStudents { get; set; }
     }
 
+    public class GetConfirmationPeriodResult : Result
+    {
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public string SemesterName { get; set; }
+    }
+
 }

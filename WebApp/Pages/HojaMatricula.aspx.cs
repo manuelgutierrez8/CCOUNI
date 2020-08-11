@@ -54,6 +54,9 @@ namespace WebApp.Pages
                                             || ss.statusId == (int)ClassStatus.DescartadaEstudiante).ToList();
             }
 
+            lbStudentName.Text = string.Format("{0} {1}", student.first_name, student.last_name);
+            lbStudentLicense.Text = student.license;
+
             rptClasses.DataSource = finalList;
             rptClasses.DataBind();
         }

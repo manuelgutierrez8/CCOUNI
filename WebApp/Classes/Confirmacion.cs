@@ -169,5 +169,42 @@ namespace WebApp.Classes
             return result;
 
         }
+
+        public static Result isValidDateToConfirm(int semesterId)
+        {
+            Result result = new Result();
+
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+            Model.Semester semester = model.Semesters.Where(s => s.id == semesterId).FirstOrDefault();
+
+            if (semester.confirmation_start < DateTime.Now && semester.confirmation_end > DateTime.Now)
+            {
+                result.Status = true;
+                result.Message = "Se puede confirmar";
+            }
+            else
+            {
+                result.Status = false;
+                result.Message = string.Format("El periodo de confirmación del semestre esta definido entre {0:dd/MM/yyyy} y {1:dd/MM/yyyy}", semester.confirmation_start, semester.confirmation_end);
+            }
+
+
+            return result;
+        }
+
+        public static GetConfirmationPeriodResult GetConfirmationPeriod(int semesterId)
+        {
+            GetConfirmationPeriodResult result = new GetConfirmationPeriodResult();
+
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+
+            Model.Semester semester = model.Semesters.Where(s => s.id == semesterId).FirstOrDefault();
+
+            result.Start = Convert.ToDateTime(semester.confirmation_start);
+            result.End = Convert.ToDateTime(semester.confirmation_end);
+
+            return result;
+        }
     }
 }

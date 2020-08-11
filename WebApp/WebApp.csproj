@@ -97,6 +97,7 @@
     <Content Include="Pages\EliminarAsignatura.aspx" />
     <Content Include="Pages\HojaMatricula.aspx" />
     <Content Include="Pages\Horario.aspx" />
+    <Content Include="Pages\PeriodoVencido.aspx" />
     <Content Include="Pages\Reportes.aspx" />
     <Content Include="Pages\RevisionSolicitud.aspx" />
     <Content Include="Pages\SolicitudAsignatura.aspx" />
@@ -225,6 +226,13 @@
     </Compile>
     <Compile Include="Pages\Horario.aspx.designer.cs">
       <DependentUpon>Horario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PeriodoVencido.aspx.cs">
+      <DependentUpon>PeriodoVencido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PeriodoVencido.aspx.designer.cs">
+      <DependentUpon>PeriodoVencido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>

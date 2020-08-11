@@ -153,7 +153,7 @@
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
                                         <tr>
-                                            <td nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">Manuel&nbsp;Abraham&nbsp;Gutiérrez&nbsp;Rojas</span></td>
+                                            <td nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"> <asp:Label ID="lbStudentName" Text="" runat="server"></asp:Label> </span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -241,7 +241,7 @@
                                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
                                         <tr>
-                                            <td nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7">2008-23295</span></td>
+                                            <td nowrap="true"><span class="fc556798af-343b-4ce5-9c9f-4e2856c07eb8-7"><asp:Label ID="lbStudentLicense" Text="" runat="server"></asp:Label></span></td>
                                         </tr>
                                     </tbody>
                                 </table>

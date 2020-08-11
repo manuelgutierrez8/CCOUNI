@@ -22,6 +22,24 @@ namespace WebApp.Pages {
         protected global::System.Web.UI.WebControls.Button btnConfirmClasses;
         
         /// <summary>
+        /// lbStudentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStudentName;
+        
+        /// <summary>
+        /// lbStudentLicense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbStudentLicense;
+        
+        /// <summary>
         /// rptClasses control.
         /// </summary>
         /// <remarks>
