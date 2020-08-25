@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -81,7 +83,45 @@ namespace WebApp.Pages
             Classes.Confirmacion.ConfirmClasses(this.student.id);
             Classes.Confirmacion.RegisterStudentConfirmation(this.student.id);
 
+            SendConfirmationEmail();
+
             Response.Redirect("HojaMatricula.aspx", true);
+        }
+
+        private void SendConfirmationEmail() {
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("ccouni.demo@gmail.com", "ccouni2020"),
+                EnableSsl = true,
+            };
+
+            string semesterName = Classes.Confirmacion.GetCurrentSemester().name;
+            string emailBody = "<p>Estimado(a) Estudiante:<p><br>" +
+                "<p>Ha finalizado el proceso de confirmación de asignaturas. Usted estará tomando las siguientes clases en este semestre:</p><br>" +
+                "<ul>";
+
+
+            foreach (StudentSchedule ss in this.schedule.StudentScheduleList)
+            {
+                emailBody += "<li><b>" + ss.ClassName + "</b></li>";
+            }
+            
+            emailBody += "</ul>";
+
+            emailBody += "<p>Atentamente</p><p>Equipo de informática Universidad Nacional de Ingeniería</p><br>";
+            emailBody += "<img width=\"100px\" src=\"https://upload.wikimedia.org/wikipedia/commons/f/f2/Logo_UNI_%281%29.png\"/>";
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress("ccouni.demo@gmail.com"),
+                Subject = "Confirmación de Asignaturas - " + semesterName,
+                Body = emailBody,
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add("manuel.gutierrezrojas8@gmail.com");
+
+            smtpClient.Send(mailMessage);
         }
 
         protected void btnDelete_Command(object sender, CommandEventArgs e)
@@ -164,5 +204,10 @@ namespace WebApp.Pages
 
             return iconClass;
         }
+
+        /*protected void Button1_Click(object sender, EventArgs e)
+        {
+            SendConfirmationEmail();
+        }*/
     }
 }

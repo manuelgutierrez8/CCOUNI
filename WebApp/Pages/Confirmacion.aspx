@@ -77,6 +77,7 @@
             </div>
             <div class="col-12 text-center">
                 <asp:Button ID="btnConfirmClasses" Text="Confirmar" class="btn btn-primary" runat="server" OnClientClick="return confirm('¿Desea guardar los cambios? Esta acción no se puede deshacer');" OnClick="btnConfirmClasses_Click" />
+                <%--<asp:Button ID="Button1" Text="Confirmar" class="btn btn-primary" runat="server" OnClick="Button1_Click" />--%>
             </div>
         </div>
         <asp:HiddenField ID="hfScheduleId" runat="server" />
