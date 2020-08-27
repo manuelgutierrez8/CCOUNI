@@ -12,7 +12,7 @@ namespace WebApp.Classes
         {
             Model.dbModelDataContext model = new Model.dbModelDataContext();
 
-            return model.Schedules.Where(s => s.id == scheduleId).First();
+            return model.Student_schedules.Where(s => s.id == scheduleId).First().Schedule;
         }
 
         public static Result UpdateScheduleStatus(int studentId, Model.Schedule scheduleInfo, ClassStatus classStatus)
