@@ -119,8 +119,11 @@ namespace WebApp.Pages
                 Body = emailBody,
                 IsBodyHtml = true,
             };
-            mailMessage.To.Add("manuel.gutierrezrojas8@gmail.com");
 
+            Model.dbModelDataContext model = new Model.dbModelDataContext();
+            string userEmail = model.Users.Where(u => u.id == this.student.user_id).FirstOrDefault().email;
+
+            mailMessage.To.Add(userEmail);
             smtpClient.Send(mailMessage);
         }
 
